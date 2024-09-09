@@ -3,15 +3,16 @@ A foundation for a robust and feature-rich file server. Currently supports servi
 
 **How to Run:**
 
-1.  **Save:**  Save the code as `main.rs`.
-2.  **Create Directory:** Create a directory (e.g., "public") and place files you want to serve inside. For example, create an `index.html` file.
-3.  **Run:**  In your terminal, navigate to the directory and run the server:
+1.  **Save the code** as `main.rs`.
+2.  **Create a directory** (e.g., "public") with an `index.html` file.
+3.  **Build and run:**
 
     ```bash
-    cargo run 8080 public
+    cargo run 8080 public 
     ```
 
-    Replace `8080` with your desired port and "public" with your directory name.
+    (Replace `8080` and "public" if needed)
 
-4.  **Access:** Open `http://127.0.0.1:8080/` in your browser. 
-
+4.  **Test:**
+    - Access `http://127.0.0.1:8080/` in your browser to see the `index.html` file.
+    - Try uploading a file using a tool like `curl`. You will need to provide Basic authentication credentials in the header.
