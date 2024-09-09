@@ -1,0 +1,38 @@
+
+**Explanation:**
+
+1. **Dependencies:**  The code uses standard Rust libraries for networking (`std::net`) and file system operations (`std::fs`).
+2. **Binding to Port:** The `TcpListener` binds to localhost (`127.0.0.1`) on port 8080. 
+3. **Incoming Connections:** The `for` loop iterates through incoming connections.
+4. **Request Handling (`handle_connection`):**
+   - **Reading the Request:** It reads the first 1024 bytes of the request into a buffer. 
+   - **Parsing the Request:** It checks if the request starts with "GET /" to determine the requested file.
+   - **Serving Files:** 
+     - If the requested file exists, it reads the file content and sets a 200 OK status. 
+     - If the file doesn't exist, it returns a 404 NOT FOUND status.
+   - **Sending Response:**  It sends the HTTP response, including the status line and the file content (or error message).
+
+**Enhancements (Based on Bounty Objectives):**
+
+* **File Upload (POST):** You'll need to add logic to handle POST requests and write uploaded data to files.
+* **Directory Listing (HTML):** You'll need to generate an HTML page dynamically to list the files in the directory. 
+* **Directory Creation, File Deletion, Authentication:** These features would require additional code to handle the relevant HTTP requests and implement the logic.
+
+**Improvements:**
+
+1. **Command-Line Arguments:**  The server now takes the port number and the directory to serve as command-line arguments, making it more flexible.
+2. **Error Handling:**  The code uses `Result` for error handling and prints error messages to the console.
+3. **Multithreading:**  Each incoming connection is handled in a separate thread using `thread::spawn()`. This improves performance, allowing the server to handle multiple requests concurrently. 
+4. **Content Type:**  The `get_content_type` function determines the correct MIME type (Content-Type header) based on the file extension, so different types of files (HTML, CSS, images, etc.) are served correctly. 
+5. **Request Parsing:** The `parse_request` function extracts the method, path, and HTTP version from the request string.
+
+**Further Enhancements:**
+
+* **File Upload:**  Add logic to handle HTTP POST requests and save the uploaded data to files in the designated directory. 
+* **Directory Listing (HTML):**  Generate an HTML page dynamically that lists the files and directories within the served directory.
+* **User Authentication:** Implement basic user authentication to restrict access to the server. You can use simple username/password combinations or explore more robust methods.
+* **TLS/SSL:**  For secure communication, integrate TLS/SSL support using libraries like `openssl` or `rustls`.  
+
+
+
+
